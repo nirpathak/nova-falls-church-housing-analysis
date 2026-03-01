@@ -1,0 +1,15 @@
+# Data files (not committed — see README for format)
+*.xlsx
+
+# macOS
+.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+.env
+venv/
+.venv/
