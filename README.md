@@ -14,7 +14,20 @@ The analysis includes:
 - **Pre/post-2020 windowed analysis** — separate trend lines to capture the COVID-era acceleration in prices
 - **Ridge regression cross-validation** — time-series CV comparing regularization strengths (α = 0, 1, 10)
 
-## Explanation of Charts
+## Explanation of Charts and Methods
+
+**OLS (Orindary Least Squares)**
+
+An OLS (Ordinary Least Squares) model is a statistical method that fits a straight line through data by minimizing the total squared difference between the actual values and the predicted values.  It's commonly used to identify trends and measure how strongly one variable relates to another.
+
+**Ridge Regression**
+
+Ridge Regression is a variation of OLS that adds a penalty to prevent the model from overfitting. An unregularized model might change to touch as many points as possible, but adding a penalty forces the line to stay simpler and smoother, which may be more reliable. The strength of that penalty is controlled by a parameter called alpha: higher alpha means more regularization. For example, an alpha of 0 would not change the model at all, but an alpha of 10 forces the model to be more conservative. 
+
+**Cross-Validation** 
+
+Cross-Validation is a technique for testing how well a model generalizes to new data. Rather than training and testing on the same data, it splits the dataset into multiple chunks and tests the model on each one in turn. For time series data specifically, this is done chronologically so that one is always predicting the future, never the past. In the context of this project, cross-validation is testing whether the model would make reasonable predictions on future prices it hasn't seen. 
+
 **1 - Price Trends Over Time** 
 
   This chart shows the monthly median sale prices for Falls Church, VA and Northern Virginia as a whole. It gives a view of how prices in both markets changed pre-, post, and during 2020. It makes it easy to compare the regions side by side. 
@@ -29,7 +42,7 @@ The analysis includes:
 
 **4 - Pre vs Post-202 Windowed Analysis**
 
-  This chart fits two separate lines for each region, one before January 2020 and one onwards. This is used to help answer the question: did the pandemic-era market represent a genuine structural shift in price growth, or a temporary spike?
+  This chart fits two separate OLS trends for each region, one before January 2020 and one onwards. Cross-Validation is used to evaluate how well each model generalizes.  This is used to help answer the question: did the pandemic-era market represent a genuine structural shift in price growth, or a temporary spike?
   
 ## Requirements
 
