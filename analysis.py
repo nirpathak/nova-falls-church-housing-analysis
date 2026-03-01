@@ -1,6 +1,6 @@
 """
 Housing Price Analysis — Northern Virginia & Falls Church
-=========================================================
+
 Loads monthly median housing prices from an Excel file, visualizes trends,
 and fits OLS and Ridge regression models to quantify price growth over time.
 
@@ -116,7 +116,7 @@ def run_ols_regression(df: pd.DataFrame, region: str):
 
 
 def plot_regression_results(df: pd.DataFrame, region: str, results) -> None:
-    """Plot the OLS fitted line and residuals for a single region.
+    """Plot the OLS fitted line and residuals for a region.
 
     Parameters:
         df:      Full long-format DataFrame.
@@ -223,6 +223,7 @@ def run_ridge_crossval(df: pd.DataFrame) -> None:
 
     print("\n--- Ridge Regression Cross-Validation (all regions combined) ---")
 
+    mean_rmses = []
     for alpha in alphas:
         fold_rmses = []
         for train_idx, test_idx in tscv.split(X):
@@ -233,8 +234,27 @@ def run_ridge_crossval(df: pd.DataFrame) -> None:
             fold_rmses.append(rmse)
 
         mean_rmse = np.mean(fold_rmses)
+        mean_rmses.append(mean_rmse)
         label = "≈ OLS" if alpha == 0.0 else f"alpha={alpha}"
         print(f"  Ridge ({label}): mean RMSE = ${mean_rmse:,.0f}")
+
+    # Bar chart comparing mean RMSE across alpha values
+    _, ax = plt.subplots(figsize=(6, 4))
+    ax.bar(
+        [str(a) for a in alphas],
+        mean_rmses,
+        color=["steelblue", "darkorange", "seagreen"],
+        edgecolor="black",
+        width=0.5,
+    )
+    ax.set_xlabel("Ridge Alpha (regularization strength)")
+    ax.set_ylabel("Mean RMSE ($)")
+    ax.set_title(
+        "Ridge Regression — Mean RMSE by Alpha\n"
+        "(Time-Series Cross-Validation, 5 folds)"
+    )
+    ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f"${x:,.0f}"))
+    plt.tight_layout()
 
 
 # Main Function
