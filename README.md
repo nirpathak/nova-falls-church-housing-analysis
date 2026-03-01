@@ -43,6 +43,10 @@ Cross-Validation is a technique for testing how well a model generalizes to new 
 **4 - Pre vs Post-202 Windowed Analysis**
 
   This chart fits two separate OLS trends for each region, one before January 2020 and one onwards. Cross-Validation is used to evaluate how well each model generalizes.  This is used to help answer the question: did the pandemic-era market represent a genuine structural shift in price growth, or a temporary spike?
+
+**5 - Ridge Cross-Validation and RMSE Comparison Chart** 
+
+  This chart visualizes Ridge Regression with Cross-Validation across alpha values of 0,1, and 10. All three produced similar RMSE values, suggesing that regularization provides only minimal benefit to this model. This is expected because only one predictor variable is used. In general, having more predictor variables increase the chances of overfitting, which is where regularization may provide more benefit. However, the $110,000 average RSME (Root Mean Squared Error) reflects how housing prices follow a clear seasonal pattern (higher in the spring/summer, lower in fall/winter).
   
 ## Requirements
 
@@ -84,3 +88,10 @@ Running the script produces 4 matplotlib figures and printed summaries:
 
 Printed output includes slope ($/month), R², and residual variance for each model, plus mean RMSE
 from Ridge regression cross-validation.
+
+## Future Improvement
+The linear models used in this analysis cannot capture the seasonal cyclicality in housing prices, where values typically peak in spring/summer and dip in fall/winter. This is likely a primary contributor to the ~$110,000 RMSE observed in the Ridge Regression analysis. A future improvement could incorporate seasonal dummy variables or a time series model better suited to cyclical data.
+
+Additionally, the Northern Virginia dataset represents the region as a whole rather than individual counties, which may obscure localized price trends within the broader market.
+
+
