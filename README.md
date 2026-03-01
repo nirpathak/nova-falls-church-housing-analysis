@@ -34,7 +34,7 @@ Cross-Validation is a technique for testing how well a model generalizes to new 
   
 **2 - NOVA OLS Regression & Residuals**
 
-  This chart has two panels. The left pannel shows a best-fit linear trend line for Northern Virginia's prices. The title displays the slope (dollars gained per month on average) and R^2, which measures how well the line explains the price movement. The right panel displays the residuals, which are the differences between the actual price and the model's prediction. This is important because it makes it clear that linear models don't always capture everything.
+  This chart has two panels. The left pannel shows a best-fit linear trend line for Northern Virginia's prices. The title displays the slope (dollars gained per month on average) and R², which measures how well the line explains the price movement. The right panel displays the residuals, which are the differences between the actual price and the model's prediction. This is important because it makes it clear that linear models don't always capture everything.
   
 **3 - Falls Church OLS Regression & Residuals**
 
