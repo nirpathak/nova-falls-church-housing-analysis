@@ -40,7 +40,7 @@ REGION_LABELS = {"Northern_VA": "Northern Virginia", "Falls_Church": "Falls Chur
 def load_data(filepath: Path) -> pd.DataFrame:
     """Load and reshape the housing price Excel file into long format.
 
-    Args:
+    Parameters:
         filepath: Path to the Excel workbook.
 
     Returns:
@@ -102,7 +102,7 @@ def plot_price_trends(df: pd.DataFrame) -> None:
 def run_ols_regression(df: pd.DataFrame, region: str):
     """Fit an OLS linear regression of price ~ time for a single region.
 
-    Args:
+    Parameters:
         df:     Full long-format DataFrame.
         region: Region identifier string (e.g. 'Northern_VA').
 
@@ -118,7 +118,7 @@ def run_ols_regression(df: pd.DataFrame, region: str):
 def plot_regression_results(df: pd.DataFrame, region: str, results) -> None:
     """Plot the OLS fitted line and residuals for a single region.
 
-    Args:
+    Parameters:
         df:      Full long-format DataFrame.
         region:  Region identifier string.
         results: Fitted statsmodels RegressionResults object.
