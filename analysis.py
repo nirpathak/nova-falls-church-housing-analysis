@@ -291,6 +291,6 @@ def main() -> None:
     # Show all figures at once
     plt.show()
 
-
+#Only run the main() function the script is being run directly. 
 if __name__ == "__main__":
     main()
