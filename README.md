@@ -46,7 +46,7 @@ Cross-Validation is a technique for testing how well a model generalizes to new 
 
 **5 - Ridge Cross-Validation and RMSE Comparison Chart** 
 
-  This chart visualizes Ridge Regression with Cross-Validation across alpha values of 0,1, and 10. All three produced similar RMSE values, suggesing that regularization provides only minimal benefit to this model. This is expected because only one predictor variable is used. In general, having more predictor variables increase the chances of overfitting, which is where regularization may provide more benefit. However, the $110,000 average RSME (Root Mean Squared Error) reflects how housing prices follow a clear seasonal pattern (higher in the spring/summer, lower in fall/winter).
+  This chart visualizes Ridge Regression with Cross-Validation across alpha values of 0,1, and 10. All three produced similar RMSE values, suggesing that regularization provides only minimal benefit to this model. This is expected because only one predictor variable is used. In general, having more predictor variables increase the chances of overfitting, which is where regularization may provide more benefit. However, the $110,000 average RMSE (Root Mean Squared Error) reflects how housing prices follow a clear seasonal pattern (higher in the spring/summer, lower in fall/winter).
   
 ## Requirements
 
