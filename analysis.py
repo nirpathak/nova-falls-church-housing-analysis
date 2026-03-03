@@ -38,13 +38,14 @@ REGION_LABELS = {"Northern_VA": "Northern Virginia", "Falls_Church": "Falls Chur
 
 
 def load_data(filepath: Path) -> pd.DataFrame:
-    """Load and reshape the housing price Excel file into long format.
+    """
+    Load and reshape the housing price Excel file into long format.
 
     Parameters:
-        filepath: Path to the Excel workbook.
+        filepath: Path to the Excel sheet
 
     Returns:
-        A DataFrame with columns: region, price, date, t (1-based month index).
+        A dataframe with columns region, price, date, t (1-based month index).
     """
     df_wide = pd.read_excel(filepath, sheet_name=SHEET_NAME)
 
@@ -75,7 +76,9 @@ def load_data(filepath: Path) -> pd.DataFrame:
 
 
 def plot_price_trends(df: pd.DataFrame) -> None:
-    """Plot monthly median housing prices for each region over time."""
+    """
+    Plot monthly median housing prices for each region over time.
+    """
     _, ax = plt.subplots(figsize=(10, 4))
 
     for region in REGIONS:
@@ -100,11 +103,12 @@ def plot_price_trends(df: pd.DataFrame) -> None:
 
 
 def run_ols_regression(df: pd.DataFrame, region: str):
-    """Fit an OLS linear regression of price ~ time for a single region.
+    """
+    Fit an OLS linear regression of price and time for a single region.
 
     Parameters:
-        df:     Full long-format DataFrame.
-        region: Region identifier string (e.g. 'Northern_VA').
+        df: long DataFrame.
+        region: Region string (e.g. 'Northern_VA').
 
     Returns:
         Fitted statsmodels RegressionResults object.
@@ -116,10 +120,11 @@ def run_ols_regression(df: pd.DataFrame, region: str):
 
 
 def plot_regression_results(df: pd.DataFrame, region: str, results) -> None:
-    """Plot the OLS fitted line and residuals for a region.
+    """
+    Plot the OLS fitted line and residuals for a region.
 
     Parameters:
-        df:      Full long-format DataFrame.
+        df:      Full long DataFrame.
         region:  Region identifier string.
         results: Fitted statsmodels RegressionResults object.
     """
@@ -164,7 +169,8 @@ def plot_regression_results(df: pd.DataFrame, region: str, results) -> None:
 
 
 def run_windowed_analysis(df: pd.DataFrame) -> None:
-    """Fit separate OLS models for pre-2020 and post-2020 periods and plot results.
+    """
+    Fit separate OLS models for pre-2020 and post-2020 periods and plot results.
 
     Prints slope and R² for each window/region combination, and visualizes
     the fitted lines for both windows on a single chart per region.
@@ -211,7 +217,8 @@ def run_windowed_analysis(df: pd.DataFrame) -> None:
 
 
 def run_ridge_crossval(df: pd.DataFrame) -> None:
-    """Evaluate Ridge regression models using time-series cross-validation.
+    """
+    Evaluate Ridge regression models using time-series cross-validation.
 
     Tests three regularization strengths (alpha = 0, 1, 10) and prints
     the mean RMSE across 5 time-series folds.
@@ -260,7 +267,9 @@ def run_ridge_crossval(df: pd.DataFrame) -> None:
 # Main Function
 
 def main() -> None:
-    """Run the full housing price analysis pipeline."""
+    """
+    Run the full housing price analysis pipeline.
+    """
     # 1. Load data
     df = load_data(DATA_FILE)
 
